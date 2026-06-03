@@ -191,11 +191,10 @@ Together K-Means and association rules provide complementary insights — cluste
 
 Han, J., Kamber, M., & Pei, J. (2022). *Data mining: Concepts and
     techniques* (4th ed.). Morgan Kaufmann.
-    https://lopes.idm.oclc.org/login?url=https://www.sciencedirect.com/book/9780128117606
 
 Raschka, S., Liu, Y., & Mirjalili, V. (2022). *Machine learning with
     PyTorch and Scikit-Learn* (3rd ed.). Packt. ISBN 9781801819312.
 
 Pedregosa, F., Varoquaux, G., Gramfort, A., et al. (2011). Scikit-learn:
     Machine learning in Python. *Journal of Machine Learning Research*,
-    12, 2825–2830. https://jmlr.org/papers/v12/pedregosa11a.html
+    12, 2825–2830.
