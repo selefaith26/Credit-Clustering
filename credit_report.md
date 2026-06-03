@@ -7,7 +7,7 @@
 
 ## Problem Statement
 
-Credit card companies manage thousands of customers with vastly different spending behaviors. Understanding these differences allows companies to personalize offers, manage risk, and improve customer retention. This project applies two data mining techniques — K-Means Clustering and Association Rules — to the Credit Card Dataset for Clustering to identify distinct customer segments and uncover behavioral patterns. The goal is to group 8,950 customers into meaningful segments and find associations between their financial behaviors.
+Credit card companies manage thousands of customers with vastly different spending behaviors. Understanding these differences allows companies to personalize offers, manage risk, and improve customer retention. This project applies two data mining techniques, K-Means Clustering and Association Rules, to the Credit Card Dataset for Clustering to identify distinct customer segments and uncover behavioral patterns. The goal is to group 8,950 customers into meaningful segments and find associations between their financial behaviors.
 
 ---
 
@@ -25,7 +25,7 @@ Clustering is an unsupervised machine learning technique that groups data points
 
 ### Association
 
-Association rule mining discovers relationships between variables in large datasets — specifically which items or behaviors tend to occur together. The Apriori algorithm finds frequent itemsets and generates rules of the form "if A then B" based on support, confidence, and lift metrics.
+Association rule mining discovers relationships between variables in large datasets, specifically which items or behaviors tend to occur together. The Apriori algorithm finds frequent itemsets and generates rules of the form "if A then B" based on support, confidence, and lift metrics.
 
 **Strengths:** Reveals non-obvious co-occurrence patterns, requires no labeled data, and produces human-readable if-then rules.
 
@@ -39,9 +39,9 @@ Correlation analysis measures the statistical relationship between two numerical
 
 **Strengths:** Simple to compute and interpret, provides a clear numerical measure of relationship strength, and helps identify redundant features before modeling.
 
-**Weaknesses:** Only measures linear relationships — two variables can have a strong non-linear relationship but a near-zero correlation coefficient. Also does not imply causation.
+**Weaknesses:** Only measures linear relationships, two variables can have a strong non-linear relationship but a near-zero correlation coefficient. Also does not imply causation.
 
-**Real-world example:** In finance, analysts compute the correlation between a stock's returns and a market index to measure how much the stock moves with the overall market — known as beta (Han, Kamber, & Pei, 2022).
+**Real-world example:** In finance, analysts compute the correlation between a stock's returns and a market index to measure how much the stock moves with the overall market, known as beta (Han, Kamber, & Pei, 2022).
 
 ---
 
@@ -87,7 +87,7 @@ Missing values   : 314
 After cleaning   : 0 missing values
 ```
 
-The dataset contains 8,950 credit card customers with 17 behavioral features. Only 314 values were missing across two columns — CREDIT_LIMIT and MINIMUM_PAYMENTS — filled using median imputation to avoid skewing from outliers. Six key features were selected covering balance, spending, cash advance usage, credit limit, payments, and full payment rate.
+The dataset contains 8,950 credit card customers with 17 behavioral features. Only 314 values were missing across two columns, CREDIT_LIMIT and MINIMUM_PAYMENTS, filled using median imputation to avoid skewing from outliers. Six key features were selected covering balance, spending, cash advance usage, credit limit, payments, and full payment rate.
 
 ---
 
@@ -143,10 +143,10 @@ Cluster 3  4878     1314         3342          8928        3325          0.02
 ![Cluster Profiles](outputs/plot3_cluster_profiles.png)
 
 **Cluster Interpretation:**
-- **Cluster 0 — Average Users (66.9%):** Moderate balance, moderate purchases, low full payment rate. The majority of customers — typical everyday credit card users.
-- **Cluster 1 — Responsible Spenders (15.3%):** Low balance, high purchases, very high full payment rate (77%). These customers spend actively but pay off balances regularly — low risk, high value.
-- **Cluster 2 — High Value (1.4%):** Extremely high balance, purchases, cash advances, and payments. Big spenders with high credit limits — the bank's most valuable but also highest-risk segment.
-- **Cluster 3 — Cash Advance Users (16.4%):** High balance, low purchases, very high cash advance usage, near-zero full payment rate. These customers rely heavily on cash advances and rarely pay in full — highest risk segment.
+- **Cluster 0 — Average Users (66.9%):** Moderate balance, moderate purchases, low full payment rate. The majority of customers, typical everyday credit card users.
+- **Cluster 1 — Responsible Spenders (15.3%):** Low balance, high purchases, very high full payment rate (77%). These customers spend actively but pay off balances regularly, low risk, high value.
+- **Cluster 2 — High Value (1.4%):** Extremely high balance, purchases, cash advances, and payments. Big spenders with high credit limits, the bank's most valuable but also highest-risk segment.
+- **Cluster 3 — Cash Advance Users (16.4%):** High balance, low purchases, very high cash advance usage, near-zero full payment rate. These customers rely heavily on cash advances and rarely pay in full, highest risk segment.
 
 ---
 
@@ -173,17 +173,17 @@ High_Purchases → High_Payments     0.329      0.659    1.318
 
 ![Association Rules](outputs/plot4_association_rules.png)
 
-The strongest association found is between high cash advance usage and high balance — customers who take large cash advances are 1.46 times more likely to carry a high balance than random chance would predict. This directly supports the Cluster 3 finding. High credit limit customers are also strongly associated with high payments, confirming that credit limit is a reasonable proxy for financial capacity.
+The strongest association found is between high cash advance usage and high balance, customers who take large cash advances are 1.46 times more likely to carry a high balance than random chance would predict. This directly supports the Cluster 3 finding. High credit limit customers are also strongly associated with high payments, confirming that credit limit is a reasonable proxy for financial capacity.
 
 ---
 
 ## Analysis of Findings
 
-The K-Means model successfully identified four distinct customer segments with a silhouette score of 0.431. The largest segment — 67% of customers — are average everyday users. The most actionable finding is the cash advance segment (Cluster 3, 16.4%), where customers carry high balances, make minimal purchases, and almost never pay in full. This segment represents the highest default risk and should be flagged for proactive outreach or credit limit review.
+The K-Means model successfully identified four distinct customer segments with a silhouette score of 0.431. The largest segment, 67% of customers, are average everyday users. The most actionable finding is the cash advance segment (Cluster 3, 16.4%), where customers carry high balances, make minimal purchases, and almost never pay in full. This segment represents the highest default risk and should be flagged for proactive outreach or credit limit review.
 
 The association rules confirmed and extended the cluster findings. The strong association between cash advance behavior and high balance (lift 1.462) validates that these behaviors co-occur at a rate significantly above chance. The association between high credit limits and high payments (lift 1.366) suggests that customers with higher limits tend to be more financially active overall.
 
-Together K-Means and association rules provide complementary insights — clustering identifies who the customer segments are while association rules explain what behaviors tend to occur together within and across those segments (Han, Kamber, & Pei, 2022).
+Together K-Means and association rules provide complementary insights, clustering identifies who the customer segments are while association rules explain what behaviors tend to occur together within and across those segments (Han, Kamber, & Pei, 2022).
 
 ---
 
